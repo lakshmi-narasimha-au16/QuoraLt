@@ -25,7 +25,7 @@ app.use('/question', quesRouter);
 
 
 // Port Number
-const port = process.env.port || 5000;
+const port = process.env.PORT || 5000;
 
 
 // Connection to Database
