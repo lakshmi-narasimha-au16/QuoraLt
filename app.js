@@ -5,6 +5,7 @@ require('dotenv/config');
 const indexRouter = require('./controller/index');
 const expressLayouts = require('express-ejs-layouts');
 const authRouter = require('./controller/authRouter');
+const quesRouter = require('./controller/QuesRouter');
 
 
 
@@ -19,11 +20,12 @@ app.use(expressLayouts)
 // Routes
 app.use('/', indexRouter);
 app.use('/auth', authRouter);
+app.use('/question', quesRouter);
 
 
 
 // Port Number
-const port = process.env.PORT || 5000;
+const port = process.env.port || 5000;
 
 
 // Connection to Database

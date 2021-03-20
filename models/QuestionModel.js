@@ -21,14 +21,9 @@ const QuestionSchema = mongoose.Schema({
         type: String,
         required:true
     },
-    title:{
+    question:{
         type: String,
-        required: true,
-        maxLength: 2048
-    },
-    detail:{
-        type: String,
-        required:true
+        required: true
     },
     votes:{
         type:Array,
