@@ -25,6 +25,7 @@ const loginSchema = Joi.object({
 Router.post('/register', async(req,res)=>{
     // validate req.body
     const {error} = registerSchema.validate(req.body)
+    
     if(error) return res.status(400).send(error)
     
     const hashed_password = await bcrypt.hashSync(req.body.password, 9);
@@ -38,7 +39,7 @@ Router.post('/register', async(req,res)=>{
         await user.save()
         res.status(200).send("registered successfully")
     }catch(err){
-        res.status(500).send(err)
+        res.status(400).send("Bad request")
     }
     
 })

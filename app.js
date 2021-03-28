@@ -6,21 +6,27 @@ const indexRouter = require('./controller/index');
 const expressLayouts = require('express-ejs-layouts');
 const authRouter = require('./controller/authRouter');
 const quesRouter = require('./controller/QuesRouter');
-
+const AnsRouter = require('./controller/AnsRouter');
+const cors = require('cors');
+const multer = require('multer');
+const upload = multer();
 
 
 // settings and middlewares
-app.use(express.json())
-app.use(express.urlencoded())
+app.use(express.json({limit: '50mb'}))
+app.use(express.urlencoded({limit: '50mb', extended:true}))
 app.set('view engine', 'ejs')
 app.set('layouts', 'views/layout');
-app.use(expressLayouts)
+app.use(expressLayouts);
+app.use(cors({credentials: true}))
+app.use(upload.none())
 
 
 // Routes
 app.use('/', indexRouter);
 app.use('/auth', authRouter);
 app.use('/question', quesRouter);
+app.use('/answer', AnsRouter)
 
 
 
