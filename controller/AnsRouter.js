@@ -71,6 +71,7 @@ const authenticate = (cookie)=>{
 
 // Route to post an answer
 Router.post('/',async(req, res)=>{
+  const { headers: { cookie } } = req
   let is_auth = await req.headers.cookie? authenticate(req.headers.cookie.split('x-access-token=')[1]):false; 
   if(is_auth.auth){
     let data = req.body.data

@@ -60,7 +60,7 @@ Router.post('/login',async(req, res)=>{
             const isValidPswd = await bcrypt.compareSync(user.password, data.password);
             if(isValidPswd){
                 const token = Jwt.sign({id:data._id}, process.env.JWTSECRET, {expiresIn:'1d'})
-                res.cookie('x-access-token', token)
+                res.cookie('x-access-token', token, {httpOnly:true, secure:false, maxAge:86400})
                 res.status(200).send({token})
             }
 
@@ -73,6 +73,36 @@ Router.post('/login',async(req, res)=>{
     
 })
 
+// get user by id
+Router.get('/users/:id', async(req, res) =>{
+    let id = req.params.id
+    try{
+        let data = await User.findById(id)
+        data.password =undefined,
+        data.role = undefined,
+        res.send(data);
+    }catch(err){
+        res.send(err)
+    }
+})
+
+
+// get profiles of list of users with ids
+Router.get('/users/profiles', async(req, res)=>{
+    const ids = req.body.ids
+    try{
+        let usersdata = await User.find({_id:{$in:ids}});
+        let data = usersdata.map(item=>{
+            item.password= undefined;
+            item.role = undefined;
+            return item
+        })
+        res.send(data)
+    }catch(err){
+        res.send(err)
+    }
+    
+})
 
 
 // Get all users

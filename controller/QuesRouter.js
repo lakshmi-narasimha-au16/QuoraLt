@@ -22,8 +22,7 @@ Router.post('/new', (req,res)=>{
                 })
                 try{
                     await question.save();
-                        if(err) return err;
-                        res.status(200).send({message:"question published successfully"});
+                    res.status(200).send({message:"question published successfully"});
                     
                 }catch(err){
                     res.status(501).send({error:err._message})
@@ -89,6 +88,20 @@ Router.get("/ques", async(req, res)=>{
         res.status(403).send({error:"search query missing"})
     }
 })
+
+// get recent questions
+Router.get("/", async(req, res)=>{
+    
+    try{
+        let data = await Question.find({}).limit(10)
+        res.send(data)
+    }
+    catch(error){
+        res.send({error})
+    }
+    
+})
+
 
 // update question
 Router.put('/update/:id', async(req,res)=>{

@@ -29,6 +29,12 @@ const QuestionSchema = mongoose.Schema({
         type:Array,
         default:[]
     },
+    upvotes:{
+        type:Number,
+    },
+    downvotes:{
+        type:Number,
+    },
     
     comments:{
         type:Array,

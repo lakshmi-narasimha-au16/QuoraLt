@@ -7,18 +7,21 @@ const expressLayouts = require('express-ejs-layouts');
 const authRouter = require('./controller/authRouter');
 const quesRouter = require('./controller/QuesRouter');
 const AnsRouter = require('./controller/AnsRouter');
+const VotesRouter = require('./controller/VotesRouter');
 const cors = require('cors');
 const multer = require('multer');
+const cookieParser = require('cookie-parser');
 const upload = multer();
 
 
 // settings and middlewares
 app.use(express.json({limit: '50mb'}))
+app.use(cookieParser());
 app.use(express.urlencoded({limit: '50mb', extended:true}))
 app.set('view engine', 'ejs')
 app.set('layouts', 'views/layout');
 app.use(expressLayouts);
-app.use(cors({credentials: true}))
+app.use(cors())
 app.use(upload.none())
 
 
@@ -27,6 +30,7 @@ app.use('/', indexRouter);
 app.use('/auth', authRouter);
 app.use('/question', quesRouter);
 app.use('/answer', AnsRouter)
+app.use('/vote', VotesRouter);
 
 
 
