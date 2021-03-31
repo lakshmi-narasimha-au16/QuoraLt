@@ -25,7 +25,7 @@ const UserSchema = mongoose.Schema({
     },
     profile_img_url:{
         type:String,
-        default:"https://drive.google.com/file/d/1q1TZddIK9ZUkjQsjhT6S8kYvadanHnhr/view?usp=sharing"
+        default:"https://res.cloudinary.com/djsrzxm3j/image/upload/v1616935984/QuoraLt/default_profile_qltwic.png"
     },
     DOB:{
         type: Date,

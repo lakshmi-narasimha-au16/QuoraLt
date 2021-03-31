@@ -21,7 +21,12 @@ app.use(express.urlencoded({limit: '50mb', extended:true}))
 app.set('view engine', 'ejs')
 app.set('layouts', 'views/layout');
 app.use(expressLayouts);
-app.use(cors())
+app.use(cors({
+    origin:"http://localhost:3000",
+    optionsSuccessStatus: 200,
+    "Access-Control-Allow-Headers": ['Content-Type'],
+    credentials:true
+}))
 app.use(upload.none())
 
 
