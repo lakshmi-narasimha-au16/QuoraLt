@@ -22,7 +22,7 @@ app.set('view engine', 'ejs')
 app.set('layouts', 'views/layout');
 app.use(expressLayouts);
 app.use(cors({
-    origin:"https://immense-dawn-55951.herokuapp.com/",
+    origin:"https://immense-dawn-55951.herokuapp.com",
     optionsSuccessStatus: 200,
     "Access-Control-Allow-Headers": ['Content-Type'],
     credentials:true
