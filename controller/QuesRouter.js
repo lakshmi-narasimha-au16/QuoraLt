@@ -18,7 +18,8 @@ Router.post('/new', (req,res)=>{
                 const question = new Question({
                     questioner: userId,
                     category:req.body.category,
-                    question: req.body.question
+                    question: req.body.question,
+                    question_url:req.body.question_url? req.body.question_url: ""
                 })
                 try{
                     await question.save();
@@ -116,7 +117,8 @@ Router.put('/update/:id', async(req,res)=>{
                 if(ques.questioner==userId){
                     const updatedQues = {
                         category:req.body.category,
-                        question: req.body.question
+                        question: req.body.question,
+                        question_url:req.body.question_url? req.body.question_url:""
                     }
                     try{
                         await Question.updateOne({_id:QId},updatedQues,{runValidators:true},(er)=>{

@@ -61,7 +61,9 @@ Router.post('/login',async(req, res)=>{
             if(isValidPswd){
                 const token = Jwt.sign({id:data._id}, process.env.JWTSECRET, {expiresIn:'1d'})
                 res.cookie('x-access-token', token, {httpOnly:true, secure:false, maxAge:86400})
-                res.status(200).send({token})
+                data.password = undefined;
+                data.role = undefined;
+                res.status(200).send({token, data})
             }
 
         }else{

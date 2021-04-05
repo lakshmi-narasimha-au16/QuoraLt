@@ -72,13 +72,32 @@ const authenticate = (cookie)=>{
 // Route to post an answer
 Router.post('/',async(req, res)=>{
   const { headers: { cookie } } = req
-  let is_auth = await req.headers.cookie? authenticate(req.headers.cookie.split('x-access-token=')[1]):false; 
+  let is_auth = await req.headers.cookie? authenticate(req.headers.cookie.split('x-access-token=')[1]):false;
+   
   if(is_auth.auth){
     let data = req.body.data
+    let qid = req.body.qid
+    let answer_by = is_auth.data.id
     let images = await getImages(data)
     var imageUrls =await getImageUrls(images)
     let optData = await replaceImageUrlsFromReqestString(data, imageUrls)
-    res.send(optData)
+    try{
+      let answer = new Answer({
+        answer: optData,
+        answer_by:answer_by
+      })
+      Question.findById(qid,async (err,resp)=>{
+        if(err) throw err;
+        resp.answers.push(answer)
+        let result = await resp.save()
+        res.send({message:"success",result})
+      })
+      
+    }
+    catch(err){
+      res.send({message: err})
+    }
+    
   }
   else{
     res.send({error:"You're not authorised. Please login"})

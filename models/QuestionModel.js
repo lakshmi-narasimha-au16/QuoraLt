@@ -25,9 +25,12 @@ const QuestionSchema = mongoose.Schema({
         type: String,
         required: true
     },
+    question_url:{
+        type:String,
+    },
     votes:{
         type:Array,
-        default:[]
+        default:{}
     },
     upvotes:{
         type:Number,

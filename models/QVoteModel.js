@@ -8,10 +8,10 @@ const QVoteSchema = mongoose.Schema({
         type:String,
         required: true
     },
-    vote:{
-        type:boolean,
+    voteV:{
+        type:Boolean,
         required: true
     }
 })
 
-module.exports = mongoose.model('votes', VoteSchema)
+module.exports = mongoose.model('votes', QVoteSchema)

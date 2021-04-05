@@ -15,14 +15,14 @@ const upload = multer();
 
 
 // settings and middlewares
-app.use(express.json({limit: '50mb'}))
+app.use(express.json({limit: '100mb'}))
 app.use(cookieParser());
-app.use(express.urlencoded({limit: '50mb', extended:true}))
+app.use(express.urlencoded({limit: '100mb', extended:true}))
 app.set('view engine', 'ejs')
 app.set('layouts', 'views/layout');
 app.use(expressLayouts);
 app.use(cors({
-    origin:"https://immense-dawn-55951.herokuapp.com",
+    origin:"https://quoralt.herokuapp.com",
     optionsSuccessStatus: 200,
     "Access-Control-Allow-Headers": ['Content-Type'],
     credentials:true

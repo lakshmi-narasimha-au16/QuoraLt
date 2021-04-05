@@ -9,10 +9,6 @@ const AnswerSchema = mongoose.Schema({
         type:String, 
         required:true
     },
-    answer_for:{
-        type:String, 
-        required: true
-    },
     answered_time:{
         type: Date,
         default: Date.now()
@@ -24,6 +20,14 @@ const AnswerSchema = mongoose.Schema({
     votes:{
         type:Array,
         default:[]
+    },
+    upvotes:{
+        type:Number,
+        default:0
+    },
+    downvotes:{
+        type:Number,
+        default:0
     },
     comments:{
         type:Array,
