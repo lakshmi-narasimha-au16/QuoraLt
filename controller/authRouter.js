@@ -142,7 +142,10 @@ Router.get('/profile', (req,res)=>{
             Jwt.verify(token, process.env.JWTSECRET, async(err, data)=>{
                 if (err) return res.send("invalid token")
                 var user = await User.findById(data.id)
-                user.password=undefined;
+                if(user.password){
+                    user.password=undefined;
+                }
+                
                 res.status(200).json(user);
             })
         }catch{

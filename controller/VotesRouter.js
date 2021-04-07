@@ -2,14 +2,13 @@ const express = require('express');
 const Router = express.Router()
 const Question = require('../models/QuestionModel');
 const Answer = require('../models/AnswerModel');
-const Qvote = require('../models/QVoteModel');
+const Qvote = require('../models/QvoteModel');
 const { authenticate } = require('../utils/Auth')
 
 
 
 // vote for a question model
 Router.post('/question/:id', async(req, res) => {
-    // const token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYwNDliNzdkNDI2YmJiNDk4YzM5NTE0OSIsImlhdCI6MTYxNzUwNTI5MiwiZXhwIjoxNjE3NTkxNjkyfQ.pDP6Pc3KI3MocNYVxUvZKpfCqwaNbfED53vfJRpaTek";
     const token = req.headers.cookie.split('x-access-token=')[1]
     // console.log(req.headers)
     const is_auth = await authenticate(token)
@@ -23,9 +22,9 @@ Router.post('/question/:id', async(req, res) => {
         try{
             Question.findById(qId,async (err,resp)=>{
                 if (err) throw err
-                let voted = await resp.votes.find((vote)=>vote.vote_by,votes.vote_by)
+                let voted = await resp.votes.filter((vote)=>vote.vote_by==votes.vote_by)
                 
-                if(voted==undefined){
+                if(voted.length==0){
                     resp.votes.push(voteId)
                     if(votes.voteV==true){
                         resp.upvotes++;
@@ -35,7 +34,7 @@ Router.post('/question/:id', async(req, res) => {
                     await resp.save()
                     res.send({resp})
                 }else{
-                    if(voted.voteV !== votes.voteV){
+                    if(voted[0].voteV !== votes.voteV){
                         
                         // voted.voteV = votes.voteV
                         resp.votes = resp.votes.filter((vote)=>{

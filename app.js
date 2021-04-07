@@ -22,7 +22,7 @@ app.set('view engine', 'ejs')
 app.set('layouts', 'views/layout');
 app.use(expressLayouts);
 app.use(cors({
-    origin:"https://quoralt.herokuapp.com",
+    origin:"http://localhost:3000",
     optionsSuccessStatus: 200,
     "Access-Control-Allow-Headers": ['Content-Type'],
     credentials:true
