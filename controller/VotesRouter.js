@@ -2,7 +2,7 @@ const express = require('express');
 const Router = express.Router()
 const Question = require('../models/QuestionModel');
 const Answer = require('../models/AnswerModel');
-const Qvote = require('../models/QvoteModel');
+const Qvote = require('../models/QVoteModel');
 const { authenticate } = require('../utils/Auth')
 
 
