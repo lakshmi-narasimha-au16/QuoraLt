@@ -24,7 +24,7 @@ app.use(expressLayouts);
 app.use(cors({
     origin:"https://quoralt.herokuapp.com",
     optionsSuccessStatus: 200,
-    "Access-Control-Allow-Headers": ['Content-Type',"Accept","origin". "X-Requested-With"],
+    "Access-Control-Allow-Headers": ['Content-Type',"Accept","origin", "X-Requested-With"],
     credentials:true
 }))
 app.use(upload.none())
