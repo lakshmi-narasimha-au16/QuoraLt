@@ -22,10 +22,10 @@ app.set('view engine', 'ejs')
 app.set('layouts', 'views/layout');
 app.use(expressLayouts);
 app.use(cors({
-    origin:"https://serene-coast-48146.herokuapp.com",
+    origin:"https://quoralt.herokuapp.com",
     optionsSuccessStatus: 200,
     "Access-Control-Allow-Credentials":true,
-    "Access-Control-Allow-Origin":"https://quoralt.herokuapp.com",
+    "Access-Control-Allow-Origin":"https://serene-coast-48146.herokuapp.com",
     credentials:true
 }))
 app.use(upload.none())
