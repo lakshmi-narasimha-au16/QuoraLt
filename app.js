@@ -22,10 +22,10 @@ app.set('view engine', 'ejs')
 app.set('layouts', 'views/layout');
 app.use(expressLayouts);
 app.use(cors({
-    origin:"https://quoralt.herokuapp.com",
+    origin:true,
     optionsSuccessStatus: 200,
     "Access-Control-Allow-Credentials":true,
-    "Access-Control-Allow-Origin":"https://serene-coast-48146.herokuapp.com",
+    "Access-Control-Allow-Origin":"https://quoralt.herokuapp.com",
     "Access-Control-Allow-Headers":"Cookie",
     credentials:true
 }))
