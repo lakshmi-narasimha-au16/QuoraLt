@@ -29,6 +29,7 @@ app.use(cors({
     "Access-Control-Allow-Headers":"Cookie",
     credentials:true
 }))
+app.options('*', cors({origin:true,credentials:true}))
 app.use(upload.none())
 
 
