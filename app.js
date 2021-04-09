@@ -26,6 +26,7 @@ app.use(cors({
     optionsSuccessStatus: 200,
     "Access-Control-Allow-Credentials":true,
     "Access-Control-Allow-Origin":"https://serene-coast-48146.herokuapp.com",
+    "Access-Control-Allow-Headers":"Cookie",
     credentials:true
 }))
 app.use(upload.none())
