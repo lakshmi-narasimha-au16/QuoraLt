@@ -25,7 +25,7 @@ app.use(cors({
     origin:"https://quoralt.herokuapp.com",
     optionsSuccessStatus: 200,
     "Access-Control-Allow-Credentials":true,
-    "Access-Control-Allow-Origin":"https://quoralt.herokuapp.com",
+    // "Access-Control-Allow-Origin":"https://quoralt.herokuapp.com",
     "Access-Control-Allow-Headers":"*",
     credentials:true
 }))
