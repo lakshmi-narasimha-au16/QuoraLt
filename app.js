@@ -26,7 +26,7 @@ app.use(cors({
     optionsSuccessStatus: 200,
     "Access-Control-Allow-Credentials":true,
     "Access-Control-Allow-Origin":"https://quoralt.herokuapp.com",
-    "Access-Control-Allow-Headers":"Cookie",
+    "Access-Control-Allow-Headers":"*",
     credentials:true
 }))
 app.options('*', cors({origin:true,credentials:true}))
